@@ -1,9 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Test Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Doom in Browser</title>
+    <style>
+        body {
+            background-color: #222;
+            color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        header {
+            background-color: #800000;
+            width: 100%;
+            padding: 20px 0;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .game-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            background-color: #000;
+            margin-bottom: 20px;
+        }
+        
+        .controls {
+            background-color: #333;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: left;
+        }
+        
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            width: 100%;
+            background-color: #111;
+        }
+    </style>
 </head>
 <body>
-  <h1>My Test Page Works!</h1>
+    <header>
+        <h1>DOOM in Your Browser</h1>
+    </header>
+    
+    <div class="game-container">
+        <!-- Using Internet Archive's embedded version of Doom -->
+        <iframe src="https://archive.org/embed/DoomsharewareEpisode" allow="autoplay; fullscreen"></iframe>
+    </div>
+    
+    <div class="controls">
+        <h2>Game Controls</h2>
+        <ul>
+            <li>Arrow keys: Move</li>
+            <li>Ctrl: Fire</li>
+            <li>Alt: Strafe</li>
+            <li>Shift: Run</li>
+            <li>Space: Use/Open</li>
+            <li>1-9: Select weapons</li>
+            <li>Esc: Menu</li>
+        </ul>
+        <p>Click inside the game area to activate controls. Press F1 for help in game.</p>
+    </div>
+    
+    <footer>
+        <p>DOOM is a registered trademark of id Software LLC. This is a fan project for educational purposes.</p>
+    </footer>
 </body>
 </html>
