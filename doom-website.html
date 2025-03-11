@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Doom in Your Browser</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #222;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #800000;
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 20px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 0 20px;
+        }
+        .game-container {
+            width: 100%;
+            margin: 20px 0;
+            background-color: #000;
+            border: 2px solid #600000;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        #jsdos {
+            width: 100%;
+            height: 480px;
+        }
+        .info {
+            background-color: #333;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        .controls ul {
+            padding-left: 20px;
+        }
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            background-color: #111;
+        }
+    </style>
+    <!-- js-dos library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-dos/6.22.60/js-dos.js"></script>
+</head>
+<body>
+    <header>
+        <h1>DOOM in Your Browser</h1>
+    </header>
+    
+    <div class="container">
+        <div class="info">
+            <p>Experience the classic 1993 first-person shooter DOOM right in your browser! No downloads required.</p>
+        </div>
+        
+        <div class="game-container">
+            <div id="jsdos"></div>
+        </div>
+        
+        <div class="controls">
+            <h2>Game Controls</h2>
+            <ul>
+                <li>Arrow keys or WASD: Move</li>
+                <li>Ctrl or Space: Fire</li>
+                <li>Alt: Strafe</li>
+                <li>Shift: Run</li>
+                <li>Enter: Use/Open</li>
+                <li>1-9: Select weapons</li>
+                <li>Esc: Menu</li>
+            </ul>
+        </div>
+    </div>
+    
+    <footer>
+        <p>DOOM is a registered trademark of id Software LLC. This is a fan project for educational purposes.</p>
+    </footer>
+
+    <script>
+        // Initialize js-dos when the page is loaded
+        window.addEventListener('load', function() {
+            // Create js-dos instance
+            const dosbox = document.getElementById('jsdos');
+            const ci = Dos(dosbox);
+            
+            // URL to a Doom shareware version bundle (zip file)
+            // Note: You need to host this zip file yourself or use a publicly available URL
+            const doomZipUrl = "https://js-dos.com/6.22/current/examples/doom.zip";
+            
+            // Load and run Doom
+            ci.run(doomZipUrl, "./DOOM.EXE")
+                .then(function(ci) {
+                    console.log("Doom is running");
+                })
+                .catch(function(error) {
+                    console.error("Error running Doom:", error);
+                    dosbox.innerHTML = `
+                        <div style="color: red; padding: 20px; text-align: center;">
+                            <h3>Error Loading Doom</h3>
+                            <p>${error}</p>
+                            <p>Please check your network connection or try again later.</p>
+                        </div>
+                    `;
+                });
+        });
+    </script>
+</body>
+</html>
